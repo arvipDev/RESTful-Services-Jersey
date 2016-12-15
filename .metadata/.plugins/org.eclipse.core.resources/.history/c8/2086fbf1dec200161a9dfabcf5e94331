@@ -1,0 +1,20 @@
+package com.pluralsight.client;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ActivityClientTest {
+
+	@Test
+	public void testGet() {
+
+		ActivityClient client = new ActivityClient();
+		//Activity activity = client.get("1234");
+		String activity = client.get("1234");
+		//System.out.print(activity.getDescription() + " " + activity.getDuration());
+		System.out.print(activity);
+		assertNotNull(activity);		
+	}
+
+}
