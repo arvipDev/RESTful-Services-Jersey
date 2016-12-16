@@ -27,7 +27,6 @@ public class ActivityClientTest {
 		
 		ActivityClient client = new ActivityClient();
 		activity = client.update(activity);
-		assertNotNull(activity);
 		
 	}
 	

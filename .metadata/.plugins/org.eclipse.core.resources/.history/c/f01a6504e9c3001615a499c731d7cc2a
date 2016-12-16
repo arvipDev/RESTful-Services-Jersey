@@ -120,7 +120,7 @@ public class ActivityResource
 	public Response delete(@PathParam ("activityId")String activityId){
 		System.out.println(activityId);
 		activityRepository.delete(activityId);
-		return Response.ok().build();
+		Response.ok().build();
 	}
 
 }
