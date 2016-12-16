@@ -26,8 +26,7 @@ public class ActivityRepositoryStub implements ActivityRepository
 		
 		activities.add(activity2);
 		
-		return activities;
-		
+		return activities;		
 	}
 
 	@Override

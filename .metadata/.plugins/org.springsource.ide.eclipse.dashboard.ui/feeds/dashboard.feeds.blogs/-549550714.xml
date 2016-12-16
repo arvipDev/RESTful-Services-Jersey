@@ -5,7 +5,37 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-12-15T12:21:58Z</updated>
+  <updated>2016-12-16T10:31:03Z</updated>
+  <entry>
+    <title>Dependency Management Plugin 1.0.0.RC1</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/12/16/dependency-management-plugin-1-0-0-rc1" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-12-16:2737</id>
+    <updated>2016-12-16T10:31:03Z</updated>
+    <content type="html">&lt;p&gt;It&amp;rsquo;s my pleasure to announce that 1.0.0.RC1 of the &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin"&gt;Dependency Management Plugin&lt;/a&gt; has been released. It&amp;rsquo;s available from &lt;a href="https://plugins.gradle.org/plugin/io.spring.dependency-management"&gt;Gradle&amp;rsquo;s Plugin Portal&lt;/a&gt; as well as Maven Central and Bintray.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new" class="anchor" name="what-rsquo-s-new"&gt;&lt;/a&gt;What&amp;rsquo;s new?&lt;/h2&gt;
+&lt;p&gt;The plugin&amp;rsquo;s been rewritten in Java and its API has been formalised. A clear separation between that API and the plugin&amp;rsquo;s internals has been introduced. This has required a few breaking changes but you are unlikely to be affected if you were using the Groovy DSL.&lt;/p&gt;
+&lt;p&gt;Converting to Java and formalising the API has also enabled a couple of enhancements:&lt;/p&gt;&lt;h3&gt;&lt;a href="#official-support-for-gradle-3" class="anchor" name="official-support-for-gradle-3"&gt;&lt;/a&gt; Official support for Gradle 3&lt;/h3&gt;
+&lt;p&gt;Previously, the plugin was written in Groovy and attempted to support Gradle 1, 2, and 3. This &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/112"&gt;proved to be overly ambitious&lt;/a&gt;. The two main problems were binary incompatibilities across the three different Groovy runtimes (1.8, 2.3, and 2.4) and breaking changes across the three versions of Gradle. To address these, the Gradle team&amp;rsquo;s recommendation was to rewrite the plugin in Java and to drop support for Gradle 1.x. This release does just that, with the plugin&amp;rsquo;s main code now being 100% Java and Gradle 2.9 now being the minimum supported version. As a result, Gradle 3.x is now officially supported and it should be easier to support new versions of Gradle in the future. A welcome side-effect is a 13% reduction in the size of the plugin&amp;rsquo;s jar file.&lt;/p&gt;&lt;h3&gt;&lt;a href="#better-support-for-gradle-script-kotlin" class="anchor" name="better-support-for-gradle-script-kotlin"&gt;&lt;/a&gt;Better support for Gradle Script Kotlin&lt;/h3&gt;
+&lt;p&gt;Previously, the plugin&amp;rsquo;s API was heavily influenced by the fact that it was written in Groovy and its API and DSL were rather Groovy-centric. For example, Groovy Closures were used in a number of places without providing a non-Groovy alternative. This required Kotlin scripts to adapt a function to a closure, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;configure&amp;lt;DependencyManagementExtension&amp;gt; {&#xD;
+    imports(delegateClosureOf&amp;lt;ImportsHandler&amp;gt; {&#xD;
+        mavenBom(&amp;quot;io.spring.platform:platform-bom:Athens-SR1&amp;quot;)&#xD;
+    })&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The conversion to Java highlighted the problem and, taking a lead from Gradle&amp;rsquo;s own API, 1.0 overloads a number of methods that previously only took a Groovy &lt;code&gt;Closure&lt;/code&gt; to also take a Gradle &lt;code&gt;Action&lt;/code&gt;. The overloaded methods allow you to neaten things up a bit, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint kotlin"&gt;configure&amp;lt;DependencyManagementExtension&amp;gt; {&#xD;
+    imports {&#xD;
+        it.mavenBom(&amp;quot;io.spring.platform:platform-bom:Athens-SR1&amp;quot;)&#xD;
+    }&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;With the API having been formalised and the plugin nearing 1.0, now is a great time to take it for a spin and let us know on &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin/issues"&gt;GitHub&lt;/a&gt; or &lt;a href="https://gitter.im/spring-gradle-plugins/dependency-management-plugin"&gt;Gitter&lt;/a&gt; of any problems you find or improvements that you&amp;rsquo;d like to see.&lt;/p&gt;
+&lt;p&gt;Thank you for all of the feedback and suggestions that you have contributed to the plugin thus far.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring Statemachine 1.2.0 Released</title>
     <link rel="alternate" href="https://spring.io/blog/2016/12/15/spring-statemachine-1-2-0-released" />
@@ -164,7 +194,7 @@ Receiver.create(receiverOptions)                                        &lt;b cl
 &lt;p&gt;Reactor Kafka source and samples are available on &lt;a href="https://github.com/reactor/reactor-kafka"&gt;github&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;For more information and additional resources, see &lt;a href="http://projectreactor.io/docs/kafka/milestone/reference/docs/index.html"&gt;Reactor Kafka Reference Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For more information and additional resources, see &lt;a href="https://repo.spring.io/milestone/io/projectreactor/kafka/reactor-kafka-docs/1.0.0.M1/reactor-kafka-docs-1.0.0.M1.zip!/docs/index.html"&gt;Reactor Kafka Reference Guide&lt;/a&gt; and &lt;a href="https://repo.spring.io/milestone/io/projectreactor/kafka/reactor-kafka/1.0.0.M1/reactor-kafka-1.0.0.M1-javadoc.jar!/index.html"&gt;Javadocs&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
   </entry>
@@ -493,18 +523,5 @@ Receiver.create(receiverOptions)                                        &lt;b cl
 &lt;p&gt;Web development has become more complex in the last few years with a plethora of frameworks to choose from and no clear direction. Join Sergi Almar in this presentation to learn why Angular2 is a good fit for Spring developers. We&amp;rsquo;ll review the Angular2 architecture and see how TypeScript allows us to build more maintable and clean applications having the benefits of a typed language. We&amp;rsquo;ll look at the Angular2 component based model, dependency injection, data binding, routing, templates&amp;hellip;to build modern web applications.&lt;/p&gt;
 &lt;p&gt;No prior AngularJS knowledge is required.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/dx8fbW8cWGw" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne Platform 2016 Replay: Netflix's Edge Gateway Using Zuul</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/12/01/springone-platform-2016-replay-netflix-s-edge-gateway-using-zuul" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-12-01:2718</id>
-    <updated>2016-12-01T12:03:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne Platform 2016.&lt;br/&gt;Speaker: Mikey Cohen, Netflix&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/netflixs-edge-gateway-using-zuul"&gt;http://www.slideshare.net/SpringCentral/netflixs-edge-gateway-using-zuul&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;An edge gateway is an essential piece of infrastructure for large scale cloud based services. This presentation details the purpose, benefits and use cases for an edge gateway to provide security, traffic management and cloud cross region resiliency. How a gateway can be used to enhance continuous deployment, and help testing of new service versions and get service insights and more are discussed. Philosophical and architectural approaches to what belongs in a gateway vs what should be in services will be discussed. Real examples of how gateway services, built on top of Netflix&amp;rsquo;s Open source project, Zuul, are used in front of nearly all of Netflix&amp;rsquo;s consumer facing traffic will show how gateway infrastructure is used in real highly available, massive scale services.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/mHHHpxJuTAo" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>

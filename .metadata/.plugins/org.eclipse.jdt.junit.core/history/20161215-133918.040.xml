@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ActivityClientTest" project="exercise-services" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="com.pluralsight.client.ActivityClientTest" time="1.954">
-    <testcase name="testGet" classname="com.pluralsight.client.ActivityClientTest" time="1.801"/>
-    <testcase name="testGetAll" classname="com.pluralsight.client.ActivityClientTest" time="0.071"/>
-    <testcase name="testGetWithNotFound" classname="com.pluralsight.client.ActivityClientTest" time="0.046"/>
-    <testcase name="testGetWithBadRequest" classname="com.pluralsight.client.ActivityClientTest" time="0.035"/>
-  </testsuite>
-</testrun>
