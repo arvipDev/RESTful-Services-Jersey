@@ -55,4 +55,9 @@ public class ActivityRepositoryStub implements ActivityRepository
 		//insert the activity to DB
 	}
 
+	@Override
+	public Activity update(Activity activity) {
+		return activity;
+	}
+
 }

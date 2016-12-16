@@ -12,6 +12,18 @@ import com.pluralsight.model.User;
 public class ActivityClientTest {
 	
 	@Test
+	public void testPut() {
+		Activity activity = new Activity();
+		activity.setDescription("Yoga");
+		activity.setDuration(55);
+		activity.setId("3456");
+		
+		ActivityClient client = new ActivityClient();
+		activity = client.update(activity);
+		
+	}
+	
+	@Test
 	public void testCreate(){
 		Activity activity = new Activity();
 		activity.setDescription("reading");
