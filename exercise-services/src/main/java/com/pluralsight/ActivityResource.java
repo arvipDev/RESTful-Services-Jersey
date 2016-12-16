@@ -30,6 +30,9 @@ public class ActivityResource
 	public Response getAllActivities()
 	{		
 		List<Activity> activities = activityRepository.findAllActivities();
+		if(activities == null){
+			return Response.status(Status.NOT_FOUND).build();
+		}
 		GenericEntity<List<Activity>> list = new GenericEntity<List<Activity>>(activities){};
 		return Response.ok().entity(list).build();
 	}
@@ -55,9 +58,19 @@ public class ActivityResource
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Path("{activityId}/user") //http://localhost:8080/exercise-services/webapi/activities/1234/user
-	public User getActivityUser(@PathParam ("activityId") String activityId)
+	public Response getActivityUser(@PathParam ("activityId") String activityId)
 	{
-		return activityRepository.findActivity(activityId).getUser();
+		if(activityId == null || activityId.length() < 4 ){
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		User user = activityRepository.findActivity(activityId).getUser();
+		
+		if(user == null){
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		
+		return Response.ok().entity(user).build();
 	}
 	
 	@POST

@@ -7,8 +7,34 @@ import java.util.List;
 import org.junit.Test;
 
 import com.pluralsight.model.Activity;
+import com.pluralsight.model.User;
 
 public class ActivityClientTest {
+	
+	@Test
+	public void testCreate(){
+		Activity activity = new Activity();
+		activity.setDescription("reading");
+		activity.setDuration(55);
+		
+		ActivityClient client = new ActivityClient();
+		activity = client.create(activity);
+		
+		System.out.println("create: " + activity);		
+		assertNotNull(activity);
+		
+	}
+	
+	@Test
+	public void testGetUser() {
+
+		ActivityClient client = new ActivityClient();
+		User user = client.getUser("1234");
+		//String activity = client.get("1234");
+		System.out.print(user.getName() + " " + user.getId());
+		System.out.print(user);
+		assertNotNull(user);		
+	}
 
 	@Test
 	public void testGet() {
@@ -40,7 +66,6 @@ public class ActivityClientTest {
 	public void testGetWithNotFound(){
 		ActivityClient client = new ActivityClient();
 		client.get("7777");
-	}
-	
+	}	
 
 }
