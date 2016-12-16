@@ -3,8 +3,10 @@ package com.pluralsight;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -86,7 +88,6 @@ public class ActivityResource
 		activity.setDescription(formParams.getFirst("description"));
 		activity.setDuration(Integer.parseInt(formParams.getFirst("duration")));
 		activityRepository.create(activity);
-
 		return activity;
 	}
 	
@@ -100,6 +101,26 @@ public class ActivityResource
 		System.out.println(activity.getDuration());
 		activityRepository.create(activity);
 		return activity;
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Path("{activityId}")
+	public Response update(Activity activity) {
+		System.out.println(activity.getId());
+		activity = activityRepository.update(activity);
+		return Response.ok().entity(activity).build();
+	}
+	
+	@DELETE
+	@Path("{activityId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Response delete(@PathParam ("activityId")String activityId){
+		System.out.println(activityId);
+		activityRepository.delete(activityId);
+		return Response.ok().build();
 	}
 
 }

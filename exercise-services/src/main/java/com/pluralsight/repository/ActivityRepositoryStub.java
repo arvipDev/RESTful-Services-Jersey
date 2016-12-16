@@ -55,4 +55,15 @@ public class ActivityRepositoryStub implements ActivityRepository
 		//insert the activity to DB
 	}
 
+	@Override
+	public Activity update(Activity activity) {
+		return activity;
+	}
+
+	@Override
+	public void delete(String activityId) {
+		//delete from activity list DB
+		
+	}
+
 }
