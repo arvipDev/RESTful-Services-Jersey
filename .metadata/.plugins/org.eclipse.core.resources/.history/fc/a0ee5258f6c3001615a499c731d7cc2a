@@ -68,6 +68,7 @@ public class ActivityRepositoryStub implements ActivityRepository
 
 	@Override
 	public List<Activity> findByDescription(List<String> descriptions) {
+		// TODO Auto-generated method stub
 		//select * from activities where description in (?,?,?)
 		List<Activity> activities = new ArrayList<Activity>();
 		Activity activity = new Activity();
