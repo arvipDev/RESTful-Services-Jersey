@@ -30,13 +30,6 @@ public class ActivityClientTest {
 	}
 	
 	@Test
-	public void testRangeSearch(){
-		
-		ActivitySearchClient client = new ActivitySearchClient();
-		
-	}
-	
-	@Test
 	public void testDelete(){
 		ActivityClient client = new ActivityClient();
 		client.delete("1234");
