@@ -3,6 +3,7 @@ package com.pluralsight.repository;
 import java.util.List;
 
 import com.pluralsight.model.Activity;
+import com.pluralsight.search.ActivitySearch;
 
 public interface ActivityRepository {
 
@@ -17,5 +18,9 @@ public interface ActivityRepository {
 	void delete(String activityId);
 
 	List<Activity> findByDescription(List<String> descriptions);
+
+	List<Activity> findByDescriptionAndRange(List<String> descriptions, int durationFrom, int durationTo);
+
+	List<Activity> findByConstraints(ActivitySearch search);
 
 }

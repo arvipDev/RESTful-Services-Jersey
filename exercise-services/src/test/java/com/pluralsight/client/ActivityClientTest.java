@@ -9,8 +9,28 @@ import org.junit.Test;
 
 import com.pluralsight.model.Activity;
 import com.pluralsight.model.User;
+import com.pluralsight.search.ActivitySearch;
 
 public class ActivityClientTest {
+	
+	@Test
+	public void testSearchObject() {
+		ActivitySearchClient client = new ActivitySearchClient();
+		List<String> searchValues = new ArrayList<String>();
+		searchValues.add("biking");
+		searchValues.add("jogging");
+		
+		ActivitySearch search = new ActivitySearch();
+		search.setDurationFrom(30);
+		search.setDurationTo(55);
+		search.setDescriptions(searchValues);
+		
+		List<Activity> activities = client.search(search);
+		
+		System.out.println(activities);
+		
+		assertNotNull(activities);
+	}
 	
 	@Test
 	public void testSearch(){
@@ -33,7 +53,24 @@ public class ActivityClientTest {
 	public void testRangeSearch(){
 		
 		ActivitySearchClient client = new ActivitySearchClient();
+		String param = "description";
+		List<String> searchValues = new ArrayList<String>();
+		searchValues.add("swimming");
+		searchValues.add("running");
 		
+		String secondParam = "durationTo";
+		int durationFrom = 30;
+		String thirdParam = "durationFrom";
+		int durationTo = 55;
+		
+		List<Activity> activities = client.rangeSearch(param, searchValues,
+				secondParam, durationFrom, thirdParam, durationTo);
+		
+		
+		System.out.println("rangeSearch: " + activities);
+		
+		assertNotNull(activities);
+				
 	}
 	
 	@Test
@@ -76,8 +113,8 @@ public class ActivityClientTest {
 		ActivityClient client = new ActivityClient();
 		User user = client.getUser("1234");
 		//String activity = client.get("1234");
-		System.out.print(user.getName() + " " + user.getId());
-		System.out.print(user);
+		System.out.println(user.getName() + " " + user.getId());
+		System.out.println(user);
 		assertNotNull(user);		
 	}
 
@@ -87,8 +124,8 @@ public class ActivityClientTest {
 		ActivityClient client = new ActivityClient();
 		Activity activity = client.get("1234");
 		//String activity = client.get("1234");
-		System.out.print(activity.getDescription() + " " + activity.getDuration());
-		System.out.print(activity);
+		System.out.println(activity.getDescription() + " " + activity.getDuration());
+		System.out.println(activity);
 		assertNotNull(activity);		
 	}
 	
@@ -97,7 +134,7 @@ public class ActivityClientTest {
 		
 		ActivityClient client = new ActivityClient();
 		List<Activity> list = client.getAll();
-		System.out.print(list);
+		System.out.println(list);
 		assertNotNull(list);
 	}
 	

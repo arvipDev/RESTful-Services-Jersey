@@ -11,8 +11,8 @@
 <fullyQualifiedTypeName name="com.pluralsight.client.ActivityClient"/>
 <fullyQualifiedTypeName name="com.pluralsight.model.Activity"/>
 <fullyQualifiedTypeName name="javax.ws.rs.client.WebTarget"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="javax.ws.rs.client.Entity"/>
 <fullyQualifiedTypeName name="com.pluralsight.model.User"/>
 <fullyQualifiedTypeName name="com.pluralsight.client.ActivitySearchClient"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 </qualifiedTypeNameHistroy>
