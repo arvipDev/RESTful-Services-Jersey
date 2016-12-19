@@ -94,7 +94,7 @@ public class ActivityResource
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Path("activity")
+	@Path("activity") //http://localhost:8080/exercise-services/webapi/activities/activity
 	public Activity createActivity(Activity activity)
 	{
 		System.out.println(activity.getDescription());
@@ -106,7 +106,7 @@ public class ActivityResource
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	@Path("{activityId}")
+	@Path("{activityId}")//http://localhost:8080/exercise-services/webapi/activities/1234
 	public Response update(Activity activity) {
 		System.out.println(activity.getId());
 		activity = activityRepository.update(activity);
@@ -114,7 +114,7 @@ public class ActivityResource
 	}
 	
 	@DELETE
-	@Path("{activityId}")
+	@Path("{activityId}")//http://localhost:8080/exercise-services/webapi/activities/3456
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response delete(@PathParam ("activityId")String activityId){
